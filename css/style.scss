@@ -35,6 +35,31 @@ body {
     font-display: block;
     src: url(../fonts/fa-solid-900.woff2) format("woff2"), url(../fonts/fa-solid-900.ttf) format("truetype");
 }
+@-webkit-keyframes Round {
+	from {
+	  -webkit-transform:rotate(0deg);
+	  -moz-transform:rotate(0deg);
+	  -o-transform:rotate(0deg);
+	}
+	to {
+	  -webkit-transform:rotate(360deg);
+	  -moz-transform:rotate(360deg);
+	  -o-transform:rotate(360deg);
+	}
+  }
+  /* Standard syntax */ 
+@keyframes Round {
+	from {
+	  -webkit-transform:rotate(0deg);
+	  -moz-transform:rotate(0deg);
+	  -o-transform:rotate(0deg);
+	}
+	to {
+	  -webkit-transform:rotate(360deg);
+	  -moz-transform:rotate(360deg);
+	  -o-transform:rotate(360deg);
+	}
+  }
 
 .fa-brands, .fa-solid {
     -moz-osx-font-smoothing: grayscale;
@@ -85,15 +110,6 @@ body {
 		height: auto;
 		border-radius: 12px;
 		padding: 25px 0px;
-		.share {
-			background-color: #0d6efd;
-			width: 7em;
-			height: 2.5em;
-			margin: 0 1em 0 auto;
-			border-radius: 50px;
-			margin-bottom: 1.5rem;
-			font-family: sans-serif;
-		}
 		.link {
 			color: #fff;
 			font-size: 15px;
@@ -102,33 +118,65 @@ body {
 			top: 0.7em;
 			font-family: sans-serif;
 		}
-		.img {
-			margin-top: 1em;
-			border-radius: 50%;
-			width: 18%;
-			border: 3px solid #FF3333;
-		}
-		.name {
-			font-family: 'Oswald', sans-serif;
-			font-size: calc(1.5em + 1.5vw);
-			font-weight: 400;
-			margin-bottom: 7px;
-		}
-		.contain {
-			width: 65%;
-			margin: 0 auto;
-			line-height:1.5;
-			font-size: 18px;
-			color: #98A1B1;
-			font-weight: 600;
-			font-family: 'Inter', sans-serif;
-			margin-bottom: 10px;
-		}
-		.button {
-			margin: 0 auto;
-			display: flex;
-			width: 40%;
-			justify-content: center;
+		.container {
+			display: grid;
+			grid-template-columns: 50% 50%;
+			width: 97%;
+			margin:15px auto;
+			.left {
+				.img {
+					margin-top: 1em;
+					border-radius: 50%;
+					width: 30%;
+					border: 3px solid #FF3333;
+				}
+				.name {
+					font-family: 'Oswald', sans-serif;
+					font-size: calc(1.5em + 1.5vw);
+					font-weight: 400;
+					margin-bottom: 7px;
+				}
+				.contain {
+					width: 80%;
+					margin: 0 auto;
+					line-height:1.5;
+					font-size: 17px;
+					color: #98A1B1;
+					font-weight: 600;
+					font-family: 'Inter', sans-serif;
+					margin-bottom: 10px;
+				}
+				.button {
+					margin: 0 auto;
+					display: flex;
+					// width: 40%;
+					justify-content: center;
+				}
+			}
+			.right {
+				.audio {
+					background-color:#f7f8f9;
+					width: 22em;
+					height: fit-content;
+					border-radius: 11%;
+					border-bottom-right-radius: 0%;
+					margin: 0 auto;
+					.img_music {
+						margin: 1em;
+						width: 37%;
+						border-radius: 50%;
+						animation: Round 8s linear 0s infinite;
+					}
+					p {
+						font-size: 20px;
+						padding-bottom: 1em;
+					}
+				}
+				audio {
+					width: 22rem;
+				}
+			}
+
 		}
 	}
 	.footer {
@@ -203,40 +251,32 @@ body {
 	width: fit-content;
 	height: fit-content;
 }
+
 @media screen and (max-width:800px) {
 	.main {
 		.body {
-			.img {
-				width: 33%;
-			}
-			.name {
-				font-size: calc(0.9em + 3.2vw);
-			}
-			.more {
-				font-size:calc(6px + 1.7vw);
-			}
-			.contain {
-				font-size:calc(8px + 1.5vw);		
-				width: 95%;		
-			}
-			.social {
-				margin-bottom: 10px;
-				.icon {
-					width:calc(2.4em + 2vw);
+			.container {
+				grid-template-columns: 100%;
+				.left {
+					.img {
+						width: 33%;
+					}
+					.name {
+						font-size: calc(0.9em + 3.2vw);
+					}
+					.more {
+						font-size:calc(6px + 1.7vw);
+					}
+					.contain {
+						font-size:calc(8px + 1.2vw);		
+						width: 95%;		
+					}
 				}
-				.instagram {
-					margin-left: 10px;
-					margin-right: 10px;
-				}
-				.tiktok {
-					margin-left: 10px;
-				}
-			}
-			.button {
-				.follow_chat {
-					font-size: 15px;
-					padding: 10px 15px;
-					width: 100px;
+				.right {
+					margin-top: 2em;
+					audio {
+						width: 22rem;
+					}
 				}
 			}
 		}
@@ -252,17 +292,40 @@ body {
 		}
 	}
 }
-@media screen and (max-width:250px) {
+@media screen and (max-width:450px){
 	.main {
 		.body {
-			.social {
-				.icon {
-					width:calc(1.8em + 3vw);
+			.container {
+				.right {
+					audio {
+						width: 70vw;
+					}
+					.audio {
+						width: 70vw;
+						p {
+							font-size: 15px;
+						}
+					}
 				}
 			}
-			.button {
-				.follow_chat {
-					width:75px;
+		}
+	}
+
+}
+@media screen and (max-width:260px) {
+	.main {
+		.body {
+			.container {
+				.left {
+					.button {
+						.follow_chat {
+							font-size: 8px;
+							width: 28vw;
+						}
+					}
+					.contain {
+						font-size: 10px;
+					}
 				}
 			}
 		}
@@ -272,7 +335,6 @@ body {
 					.text {
 						font-size: 10px;
 					}
-					
 				}
 			}
 		}
